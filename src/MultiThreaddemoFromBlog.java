@@ -28,12 +28,12 @@ import java.*;
 public class MultiThreaddemoFromBlog {
     private static String getFirstResult(String question, List<String> engines) {
         final AtomicReference<String> result = new AtomicReference<>();
-        for(String base: engines) {
-            String url = base + question;
-            new Thread(() -> {//新建一个线程
-                result.compareAndSet(null, WS.url(url).get());
-            }).start();
-        }
+//        for(String base: engines) {
+//            String url = base + question;
+//            new Thread(() -> {//新建一个线程
+//                result.compareAndSet(null, WS.url(url).get());
+//            }).start();
+//        }
         while(result.get() == null); // wait for some result to appear
         return result.get();
     }
@@ -43,12 +43,12 @@ public class MultiThreaddemoFromBlog {
     private static String getFirstResultExecutors(String question, List<String> engines) {
         ExecutorCompletionService<String> service = new ExecutorCompletionService<String>(Executors.newFixedThreadPool(4));
 
-        for(String base: engines) {
-            String url = base + question;
-            service.submit(() -> {
-                return WS.url(url).get();
-            });
-        }
+//        for(String base: engines) {
+//            String url = base + question;
+//            service.submit(() -> {
+////                return WS.url(url).get();
+//            });
+//        }
         try {
             return service.take().get();
         }
@@ -57,14 +57,14 @@ public class MultiThreaddemoFromBlog {
         }
     }
 
-    private static String getFirstResult(String question, List<String> engines) {
-        // get element as soon as it is available
-        Optional<String> result = engines.stream().parallel().map((base) -> {
-            String url = base + question;
-            return WS.url(url).get();
-        }).findAny();
-        return result.get();
-    }
-
+//    private static String getFirstResult(String question, List<String> engines) {
+//        // get element as soon as it is available
+//        Optional<String> result = engines.stream().parallel().map((base) -> {
+//            String url = base + question;
+//            return WS.url(url).get();
+//        }).findAny();
+//        return result.get();
+//    }
+//
 
 }
