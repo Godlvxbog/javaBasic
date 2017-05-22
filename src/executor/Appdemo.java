@@ -14,6 +14,14 @@ import java.util.concurrent.Executors;
  * 2 用用多线程框架 去执行 executeService.excute(task);
  * 3 理解抽象类:抽象函数 --抽象类
  *
+ *
+ * 可以为你的下次面试准备以下一些CountDownLatch相关的问题：
+
+ 解释一下CountDownLatch概念?
+ CountDownLatch 和CyclicBarrier的不同之处?
+ 给出一些CountDownLatch使用的例子?
+ CountDownLatch 类中主要的方法?
+ *
  */
 public class Appdemo {
     public static void main(String[] args) {

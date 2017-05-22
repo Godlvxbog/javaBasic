@@ -43,7 +43,8 @@ public class ApplicationStartupUtil
 		{
 			executor.execute(v);
 		}
-		
+
+		//启动后台线程之后，必须立马在主线程中的countdownlatch.await();实现主线程阻塞，等待后台线程执行完毕，主线程才往下执行
 		_latch.await();
 		
 		for(final BaseHealthChecker v : _services) 

@@ -30,7 +30,7 @@ public class CountdownLatch {
             Runnable run = new Runnable() {
                 public void run() {
                     try {
-                        // 如果当前计数为零，则此方法立即返回。结束await状态，主线程等待后台线程进行，这段时间是阻塞的
+                        // await（）的调用者将会被阻塞
                         // 等待
                         begin.await();
                         Thread.sleep((long) (Math.random() * 10000));//模拟每个运动员进行的跑步所需要的时间

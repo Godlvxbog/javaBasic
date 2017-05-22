@@ -7,7 +7,8 @@ public abstract class BaseHealthChecker implements Runnable {
 	private CountDownLatch _latch;
 	private String _serviceName;
 	private boolean _serviceUp;
-	
+
+	//构造函数作用，初始化field
 	public BaseHealthChecker(String serviceName, CountDownLatch latch)
 	{
 		super();
